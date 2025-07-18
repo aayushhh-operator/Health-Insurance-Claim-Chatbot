@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ICICI Lombard Claim Checker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>ICICI Lombard Insurance Claim Checker</h2>
+        <form method="POST">
+            <input type="text" name="query" placeholder="Enter surgery or medication..." required>
+            <button type="submit">Check Claim</button>
+        </form>
+
+        {% if claim_status %}
+        <div class="response-box">
+            <h3>{{ claim_status }}</h3>
+            <p>{{ justification }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
