@@ -15,14 +15,14 @@ embed_model = SentenceTransformer("all-MiniLM-L6-v2")
 
 # Load LLM (Phi-3)
 llm = Llama(
-    model_path="D:\\Ollama\\Phi-3-mini-4k-instruct-q4.gguf",  # Use double backslashes for Windows
+    model_path="path_to_gguf_model", 
     n_ctx=4096,
     n_threads=6,
     temperature=0.2,
     top_k=50,
     top_p=0.95,
     repeat_penalty=1.1,
-    chat_format="chatml",  # Important for Phi-3
+    chat_format="chatml"
 )
 
 # Load or build FAISS index
@@ -32,7 +32,7 @@ if os.path.exists("db/faiss_index") and os.path.exists("db/docs.pkl"):
         documents = pickle.load(f)
 else:
     # Extract text from PDF
-    text = extract_text("data/icici_lombard.pdf")
+    text = extract_text("path_to_document")
 
     # Chunk the text
     chunks = [text[i:i+500] for i in range(0, len(text), 500)]
