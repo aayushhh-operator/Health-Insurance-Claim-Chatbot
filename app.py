@@ -32,7 +32,7 @@ if os.path.exists("db/faiss_index") and os.path.exists("db/docs.pkl"):
         documents = pickle.load(f)
 else:
     # Extract text from PDF
-    text = extract_text("path_to_document")
+    text = extract_text("data/icici_lombard.pdf")
 
     # Chunk the text
     chunks = [text[i:i+500] for i in range(0, len(text), 500)]
